@@ -1,111 +1,98 @@
-.. _releases-1.1-rc-1:
+=================================
+Django 1.1 RC 1 リリースノート
+=================================
 
-=============================
-Django 1.1 RC 1 release notes
-=============================
-
+:revision-up-to: 17812 (1.4) 
 
 July 21, 2009
 
-Welcome to the first Django 1.1 release candidate!
+Django 1.1 release candidate にようこそ!
 
-This is the third -- and likely last -- in a series of
-preview/development releases leading up to the eventual release of
-Django 1.1, currently scheduled to take place approximately one week
-after this release candidate. This release is targeted primarily at
-developers who are interested in trying out new features and testing
-the Django codebase to help identify and resolve any critical bugs
-prior to the final 1.1 release.
+これはDjango 1.1イベントリリースまでの三番目 -- そして多分最後の -- 
+preview/development リリースで、現在1.1のリリースはこの release candidate の
+約一週間後予定されています。 このリリースは Djangoコードベースの新しい機能の
+お試しとテストに興味ある開発者を主なターゲットとしていて、彼らは最終の1.1
+リリース前に重大なバグの発見と解決を助けてくれるでしょう。
 
-As such, this release is not yet intended for production use, and any
-such use is discouraged.
+ということで、このリリースは本番使用を目的とはしていないのでそのような使用
+をしないでください。
 
-
-What's new in Django 1.1 RC 1
+Django 1.1 RC 1 で新しいこと
 =============================
 
-The Django codebase has -- with one exception -- been in feature
-freeze since the first 1.1 beta release, and so this release candidate
-contains only one new feature (see below); work leading up to this
-release candidate has instead been focused on bugfixing, particularly
-on the new features introduced prior to the 1.1 beta.
+Django コードベースは -- １つの例外はありますが -- 最初の 1.1 ベータリリース
+から昨日は凍結されているので、このリリース候補にはただ一つの新機能(以下参照)
+だけがあります;このリリース候補までの作業はとくに1.1ベータまでに導入された
+新機能に関するバグフィックスに注力してきました。
 
-For an overview of those features, consult :ref:`the Django 1.1 beta
-release notes <releases-1.1-beta-1>`.
-
-
-URL namespaces
---------------
-
-The 1.1 beta release introduced the ability to use reverse URL
-resolution with Django's admin application, which exposed a set of
-:ref:`named URLs <naming-url-patterns>`. Unfortunately, achieving
-consistent and correct reverse resolution for admin URLs proved
-extremely difficult, and so one additional feature was added to Django
-to resolve this issue: URL namespaces.
-
-In short, this feature allows the same group of URLs, from the same
-application, to be included in a Django URLConf multiple times, with
-varying (and potentially nested) named prefixes which will be used
-when performing reverse resolution. For full details, see :ref:`the
-documentation on defining URL namespaces
-<topics-http-defining-url-namespaces>`.
-
-Due to the changes needed to support this feature, the URL pattern
-names used when reversing admin URLs have changed since the 1.1 beta
-release; if you were developing applications which took advantage of
-this new feature, you will need to update your code to reflect the new
-names (for most purposes, changing ``admin_`` to ``admin:`` in names
-to be reversed will suffice). For a full list of URL pattern names
-used by the admin and information on how namespaces are applied to
-them, consult the documentation on :ref:`reversing admin URLs
-<admin-reverse-urls>`.
+これらの機能の概要に関しては :doc:`Django 1.1 ベータリリースノート
+</releases/1.1-beta-1>` を参照してください。
 
 
-The Django 1.1 roadmap
-======================
+URL ネームスペース
+----------------------------
 
-As of this release candidate, Django 1.1 is in both feature freeze and
-"string freeze" -- all strings marked for translation in the Django
-codebase will retain their current form in the final Django 1.1
-release. Only critical release-blocking bugs will receive attention
-between now and the final 1.1 release.
+1.1βリリースではDjangoのadminアプリケーションでの逆URL解決が導入されました。
+これは :ref:`名前付けURL <naming-url-patterns>` で公開されています。
+残念ながらadmin URLの逆解決を一貫性があって正確に行うことを実現現するのは
+極端に難しかったので、この問題を解決するためにDjangoに１つの機能を追加しま
+した:URLネームスペースです。
 
-If no such bugs are discovered, Django 1.1 will be released
-approximately one week after this release candidate, on or about July
-28, 2009.
+簡単に言うと、逆解決が実行されるときに(潜在的にはネスト可能な)名前付けられた
+プレフィックスが変換されるので、同じグループのURLを同じアプリケーションで
+DjangoのURLConfに何度もインクルードできるということです。詳細は
+:ref:`URL ネームスペースを定義する <topics-http-defining-url-namespaces>` 
+を参照してください。
+
+この機能をサポートするために必要とした変更により、 admin URLを逆変換される時
+に使われるURLパターン名は1.1ベータリリースから変更されています;この機能を
+生かしたアプリケーションを開発しているのであれば、コードを更新して新しい名前
+にする必要があります(多くの場合、逆変換される名前の ``admin__`` を ``admin:``
+に変更することで十分です)。
+adminで使われるURLパターン名の全リストと、これにどのようなネームスペースが
+適用されるか、に関しては :ref:`admin URL を逆変換する <admin-reverse-urls>`
+に関するドキュメントを参照してください。
+
+Django 1.1 ロードマップ
+==========================
+
+このリリース候補の時点では Django 1.1 は機能凍結と"文字列凍結"されています
+-- Djangoコードベースにおいて翻訳としてマークされていた全ての文字列が
+最終のDjango 1.1リリース用の形式に保たれていると言うことです。
+リリースを阻害している重大なバグを今から最終1.1リリースの間までに注目して
+行きます。
+
+このようなバグが発見されなければ、Django 1.1 はこのリリース候補からおよそ
+１週間後の2009年6月29日頃にリリースされます。
 
 
-What you can do to help
+手助けできること
 =======================
 
-In order to provide a high-quality 1.1 release, we need your
-help. Although this release candidate is, again, *not* intended for
-production use, you can help the Django team by trying out this
-release candidate in a safe testing environment and reporting any bugs
-or issues you encounter. The Django ticket tracker is the central
-place to search for open issues:
+ハイクオリティな1.1リリースを提供するために皆さんの助けが必要です。
+このリリース候補は本番使用を意図したもの *ではない* ものの、安全なテスト環境で
+このリリース候補を使ってみて見つかった全てのバグや問題を報告することで Django
+チームを助けることができます。 Djangoのチケットとラッカーは現在の問題を検索する
+中心的な場所です:
 
-    * http://code.djangoproject.com/timeline
+* https://code.djangoproject.com/timeline
 
-Please open a new ticket only if no existing ticket corresponds to a
-problem you're running into.
+見つかった問題に対して既存のチケットが対応していないのであれば新しいチケットを
+オープンしてください。
 
-Additionally, discussion of Django development, including progress
-toward the 1.1 release, takes place daily on the django-developers
-mailing list:
+さらに1.1リリースより先のことを含めて Django開発の議論は django-developers 
+メーリングリストで毎日行われています :
 
-    * http://groups.google.com/group/django-developers
+* http://groups.google.com/group/django-developers
 
-... and in the ``#django-dev`` IRC channel on ``irc.freenode.net``. If you're
-interested in helping out with Django's development, feel free to join the
-discussions there.
+... また ``irc.freenode.net`` での ``#django-dev`` IRCチャネルでも。
+Djangoの開発を手伝いたいのであればこれらのディスカッションに自由に参加してくだ
+さい。
 
-Django's online documentation also includes pointers on how to contribute to
-Django: 
+DjangoのオンラインドキュメントにはDjangoへの寄贈の仕方の参照が含まれています:
 
-    * :ref:`How to contribute to Django <internals-contributing>`
+* :doc:`Djangoへの寄贈の仕方 </internals/contributing/index>`
 
-Contributions on any level -- developing code, writing documentation or simply
-triaging tickets and helping to test proposed bugfixes -- are always welcome and
-appreciated.
+どのレベルの寄贈も常に歓迎されて評価されます -- コードの開発、ドキュメントの記述
+、単にチケットの優先の決定をするとかでもいいですし、提案されたバグフィックスを
+テストするのを手伝うなどもあります。
