@@ -1,53 +1,50 @@
-.. _releases-1.0.2:
+=============================
+Django 1.0.2 リリースノート
+=============================
 
-==========================
-Django 1.0.2 release notes
-==========================
+:revision-up-to: 8961 (1.0)
 
-Welcome to Django 1.0.2!
+Django 1.0.2 へようこそ!
 
-This is the second "bugfix" release in the Django 1.0 series,
-improving the stability and performance of the Django 1.0 codebase. As
-such, Django 1.0.2 contains no new features (and, pursuant to
-:ref:`our compatibility policy <misc-api-stability>`, maintains backwards compatibility with Django
-1.0.0), but does contain a number of fixes and other
-improvements. Django 1.0.2 is a recommended upgrade for any
-development or deployment currently using or targeting Django 1.0.
+これはDjang 1.0シリーズにおける２つ目の"バグフィックス"リリース で、
+Django 1.0 コードベースの安定性とパフォーマンスを改善するものです。 
+よってDjango 1.0.2 には新しい機能はふくまれていません (そして 
+:doc:`我々の互換性ポリシー </misc/api-stability>` に 従って Django 1.0.0 
+との上位互換性 を維持しています)が、多くのフィックスとと改善が含まれてい
+ます。 Django1.0.2 は開発、あるいは本番で現在使っている、もしくはこれから
+使おうとしている Django 1.0 をアップグレードするものとして推奨されます。 
 
-
-Fixes and improvements in Django 1.0.2
+Django 1.0.2 でのフィックスと改善
 ======================================
 
-The primary reason behind this release is to remedy an issue in the
-recently-released Django 1.0.1; the packaging scripts used for Django
-1.0.1 omitted some directories from the final release package,
-including one directory required by ``django.contrib.gis`` and part of
-Django's unit-test suite.
+このリリースの主な理由は最後にリリースされた Django 1.0.1 での問題を解決
+することです; Django 1.0.1 でつかわれたパッケージスクリプトでは最終リリース
+パッケージから漏れたディレクトリ、 ``django.contrib.gis`` で必要とされる
+ディレクトリとか、Djangoのユニットテストスイートの一部のディレクトリなど
+が含まれています。
 
-Django 1.0.2 contains updated packaging scripts, and the release
-package contains the directories omitted from Django 1.0.1. As such,
-this release contains all of the fixes and improvements from Django
-1.0.1; see :ref:`the Django 1.0.1 release notes <releases-1.0.1>` for
-details.
+Django 1.0.2 ではパッケージスクリプトの更新が含まれていて、そのリリース
+パッケージには Django 1.0.1 で漏れていたディレクトリが含まれています。
+また、Django 1.0.1 からの全てのフィックスと改善を含んでいます;
+詳細は :doc:`Django 1.0.1 リリースノート </releases/1.0.1>` を参照して
+ください。
 
-Additionally, in the period since Django 1.0.1 was released:
 
-* Updated Hebrew and Danish translations have been added.
+さらに Django 1.0.1 のリリースから、次のような問題が解決されました:
 
-* The default ``__repr__`` method of Django models has been made more
-  robust in the face of bad Unicode data coming from the
-  ``__unicode__`` method; rather than raise an exception in such
-  cases, ``repr()`` will now contain the string "[Bad Unicode data]"
-  in place of the invalid Unicode.
+* ヘブライ語とデンマーク語の翻訳の更新が追加されました。
 
-* A bug involving the interaction of Django's ``SafeUnicode`` class
-  and the MySQL adapter has been resolved; ``SafeUnicode`` instances
-  (generated, for example, by template rendering) can now be assigned
-  to model attributes and saved to MySQL without requiring an explicit
-  intermediate cast to ``unicode``.
+* Django モデルのデフォルトの ``__repr__`` メソッドは ``__unicode__`` 
+  メソッドが正しくないユニコードデータを返した時でもより堅牢になりました。
+  ;例外を返すのではなく、 ``repr()`` が不正なユニコードの箇所に 
+  "[Bad Unicode Data]" 文字を含めるようになりました。
+ 
+* Djangoの ``SafeUnicode`` クラスと MySQL アダプタの相互作用に関連したバグ
+  が解決されました; ``SafeUnicode`` インスタンス(例えば、テンプレートレンダ
+  リングで生成されます)がモデル属性に追加されて、明示的に ``unicode`` への
+  中間的なキャストをしなくても MySQL に保存できるようになりました。
 
-* A bug affecting filtering on a nullable ``DateField`` in SQLite has
-  been resolved.
+* SQLiteでは null可能な ``DateField`` をフィルタリングする際に生じるバグが
+  解決されました。
 
-* Several updates and improvements have been made to Django's
-  documentation.
+* Django のドキュメントにいくつかの更新と改善が行われました。
