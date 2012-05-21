@@ -1,67 +1,66 @@
-.. _releases-1.0.1:
+============================
+Django 1.0.1 リリースノート
+============================
 
-==========================
-Django 1.0.1 release notes
-==========================
+Django 1.0.1 にようこそ!
 
-Welcome to Django 1.0.1!
+これはDjang 1.0シリーズにおける最初の"バグフィックス"リリース で、
+Django 1.0 コードベースの安定性とパフォーマンスを改善するものです。  
+よってDjango 1.0.1 には新しい機能はふくまれていません (そして  
+:doc:`我々の互換性ポリシー </misc/api-stability>` に 従って Django 1.0 
+との上位互換性 を維持しています)が、多くのフィックスとと改善が含まれてい
+ます。 Django1.0.1 は開発、あるいは本番で現在使っている、もしくはこれから
+使おうとしている Django 1.0 をアップグレードするものとして推奨されます。  
 
-This is the first "bugfix" release in the Django 1.0 series, improving
-the stability and performance of the Django 1.0 codebase. As such,
-Django 1.0.1 contains no new features (and, pursuant to `our
-compatibility policy`_, maintains backwards compatibility with Django
-1.0), but does contain a number of fixes and other
-improvements. Django 1.0.1 is a recommended upgrade for any
-development or deployment currently using or targeting Django 1.0.
-
-
-Fixes and improvements in Django 1.0.1
+Django 1.0.1 でのフィックスと改善
 ======================================
 
-Django 1.0.1 contains over two hundred fixes to the original Django
-1.0 codebase; full details of every fix are available in `the
-Subversion log of the 1.0.X branch`_, but here are some of the
-highlights:
+Django 1.0.1 には元の Django 1.0 コードベースに対する200以上のフィックスが
+含まれています;各フィックスの詳細は `1.0.X ブランチのSubversionログ`_
+で見ることができますが、ここではそのいくつかをハイライトとして紹介します:
 
-* Several fixes in ``django.contrib.comments``, pertaining to RSS
-  feeds of comments, default ordering of comments and the XHTML and
-  internationalization of the default templates for comments.
+* ``django.contrib.comments`` にいくつかのフィックがあります。RSSフィードを
+  コメントすることができます。コメントのデフォルトの並び順に関するフィックス
+  があります。また、コメントに対するデフォルトのテンプレートのXHTML化と国際化
+  に関するフィックスがあります。
 
-* Multiple fixes for Django's support of Oracle databases, including
-  pagination support for GIS QuerySets, more efficient slicing of
-  results and improved introspection of existing databases.
+* OracleデータベースのDjangoサポートにいくつかのフィックスがあります。
+  GIS QuerySetでの改ページに関するフィックスがあります。結果のスライシング
+  がより効率よくなりました。 既存のデータベースのイントロスペクションが改善
+  されました。
+ 
+* Django オブジェクトリレーションマッパーでのクエリサポートに関していくつかの
+  フィックスがあります。セットの繰り返しに関するフィックスや、並び順にの
+  リセットに関するフィックス、また ``INSERT`` のみクエリを使う時のフィックス
+  があります。
 
-* Several fixes for query support in the Django object-relational
-  mapper, including repeated setting and resetting of ordering and
-  fixes for working with ``INSERT``-only queries.
+* フォームセットでのインラインフォームにいくつかのフィックスがあります。
 
-* Multiple fixes for inline forms in formsets.
 
-* Multiple fixes for ``unique`` and ``unique_together`` model
-  constraints in automatically-generated forms.
+* 自動生成フォームでの ``unique`` と ``unique_together`` モデル制約に関する
+  フィックスがいくつかあります。
 
-* Fixed support for custom callable ``upload_to`` declarations when
-  handling file uploads through automatically-generated forms.
+* 自動生成フォームでファイルアップロードを扱う際に設定可能な呼び出し可能
+  オブジェクトである ``upload_to`` 宣言のサポートでのフィックスがあります。
 
-* Fixed support for sorting an admin change list based on a callable
-  attributes in ``list_display``.
+* ``list_display`` での呼び出し可能オブジェクト属性に基づいた admin 変更
+  一覧のソートのサポートのフィックスがあります。
+ 
+* ``join`` テンプレートフィルターに渡されるリテラル文字列の自動エスケープの
+  適用に対するフィックスがあります。以前は、 ``join`` に渡されてるリテラル
+  文字列は自動的にエスケープされていましたが、これは
+  :ref:`自動エスケープとリテラル文字列に関する振る舞いのドキュメント
+  <string-literals-and-automatic-escaping>` に反する動作でした。
+  ``join`` に渡されるリレラル文字列はもはや自動エスケープされなくなったので、
+  手動でエスケープしなければなりません;このバグに依存していていれば互換性が
+  なくなりますが、ドキュメントされたエスケープの振る舞いに依存していれば
+  問題ないです。
 
-* A fix to the application of autoescaping for literal strings passed
-  to the ``join`` template filter. Previously, literal strings passed
-  to ``join`` were automatically escaped, contrary to `the documented
-  behavior for autoescaping and literal strings`_. Literal strings
-  passed to ``join`` are no longer automatically escaped, meaning you
-  must now manually escape them; this is an incompatibility if you
-  were relying on this bug, but not if you were relying on escaping
-  behaving as documented.
+* デフォルトでサポートされるDjangoの多くの言語の翻訳ファイルが改善されたり
+  拡張されました。
 
-* Improved and expanded translation files for many of the languages
-  Django supports by default.
+* またいつも通りですが、 Djangoのドキュメントが数多く改善されました。
+  既存のドキュメントの修正と、ドキュメントの発展や追加もあります。
 
-* And as always, a large number of improvements to Django's
-  documentation, including both corrections to existing documents and
-  expanded and new documentation.
 
-.. _our compatibility policy: http://docs.djangoproject.com/en/dev/misc/api-stability/
-.. _the Subversion log of the 1.0.X branch: http://code.djangoproject.com/log/django/branches/releases/1.0.X
-.. _the documented behavior for autoescaping and literal strings: http://docs.djangoproject.com/en/dev/topics/templates/#string-literals-and-automatic-escaping
+.. _1.0.X ブランチのSubversionログ: https://code.djangoproject.com/log/django/branches/releases/1.0.X
